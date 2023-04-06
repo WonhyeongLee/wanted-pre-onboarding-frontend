@@ -6,12 +6,13 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 function GoBackButton() {
   const navigate = useNavigate();
   return (
-    <div
-      onClick={() => {
-        navigate(-1);
-      }}
-    >
-      <FontAwesomeIcon icon={faArrowLeft} />
+    <div>
+      <FontAwesomeIcon
+        icon={faArrowLeft}
+        onClick={() => {
+          navigate(-1);
+        }}
+      />
     </div>
   );
 }
