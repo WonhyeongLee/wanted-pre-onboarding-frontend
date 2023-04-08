@@ -20,8 +20,8 @@ export const signInUser = async (email, password) => {
       email: email,
       password: password,
     });
-    const userToken = response.data.access_token;
-    localStorage.setItem("userToken", userToken);
+    const access_token = response.data.access_token;
+    localStorage.setItem("access_token", access_token);
     return response;
   } catch (error) {
     throw error;

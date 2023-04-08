@@ -6,9 +6,8 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-  // 요청이 전달되기 전에 작업 수행
-  const userToken = localStorage.getItem("userToken");
-  userToken && (config.headers.Authorization = `Bearer ${userToken}`);
+  const access_token = localStorage.getItem("access_token");
+  access_token && (config.headers.Authorization = `Bearer ${access_token}`);
   return config;
 });
 
