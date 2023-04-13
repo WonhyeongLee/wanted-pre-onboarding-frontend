@@ -17,3 +17,21 @@ export const getTodosApi = async () => {
     throw error;
   }
 };
+
+export const updateTodoApi = async (todoId, body) => {
+  try {
+    const response = await instance.put(`/todos/${todoId}`, body);
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deleteTodoApi = async (todoId) => {
+  try {
+    const response = await instance.delete(`/todos/${todoId}`);
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};

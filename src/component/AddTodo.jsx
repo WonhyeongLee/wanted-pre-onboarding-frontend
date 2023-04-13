@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useTodo from "../hooks/useTodo";
 
-function AddTodo() {
+function AddTodo({ todos, fetchTodoList }) {
   const { createTodo } = useTodo();
   const [todoInput, setTodoInput] = useState("");
 
@@ -15,6 +15,7 @@ function AddTodo() {
       await createTodo({ todo: todoInput });
       // 입력창 초기화
       setTodoInput("");
+      fetchTodoList();
     } catch (error) {
       console.error(error);
     }

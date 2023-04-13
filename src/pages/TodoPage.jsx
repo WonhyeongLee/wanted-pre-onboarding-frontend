@@ -2,14 +2,17 @@ import React from "react";
 import AddTodo from "../component/AddTodo";
 import TodoList from "../component/TodoList";
 import TodoLayout from "../component/TodoLayout";
+import useTodo from "../hooks/useTodo";
 
-function TodoPage() {
+const TodoPage = () => {
+  const { todos, fetchTodoList } = useTodo();
+
   return (
     <TodoLayout>
-      <AddTodo />
-      <TodoList />
+      <AddTodo todos={todos} fetchTodoList={fetchTodoList} />
+      <TodoList todos={todos} fetchTodoList={fetchTodoList} />
     </TodoLayout>
   );
-}
+};
 
 export default TodoPage;
