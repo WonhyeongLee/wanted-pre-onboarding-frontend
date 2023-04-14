@@ -11,22 +11,21 @@ function TodoItem({ todo, fetchTodoList }) {
     setIsModify(true);
   };
 
-  const clickTodoCompleted = async () => {
+  const handleUpdateTodo = async (newTodo, newIsCompleted) => {
+    console.log(`${newTodo},${newIsCompleted}`);
     const updateBody = {
-      todo: modifiedTodo,
-      isCompleted: !isTodoCompleted,
+      todo: newTodo,
+      isCompleted: newIsCompleted,
     };
+    return await updateTodo(todo.id, updateBody);
+  };
+  const clickTodoCompleted = async () => {
     setIsTodoCompleted(!isTodoCompleted);
-    const updatedTodo = await updateTodo(todo.id, updateBody);
-    console.log(updatedTodo);
+    await handleUpdateTodo(modifiedTodo, !isTodoCompleted);
   };
 
   const submitModifiedTodo = async () => {
-    const updateBody = {
-      todo: modifiedTodo,
-      isCompleted: isTodoCompleted,
-    };
-    const updatedTodo = await updateTodo(todo.id, updateBody);
+    const updatedTodo = await handleUpdateTodo(modifiedTodo, isTodoCompleted);
     setIsModify(false);
     setIsTodoCompleted(updatedTodo.isCompleted);
     setModifiedTodo(updatedTodo.todo);
