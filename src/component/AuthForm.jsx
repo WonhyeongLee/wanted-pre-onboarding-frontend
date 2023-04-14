@@ -35,7 +35,7 @@ function AuthForm({ authType }) {
     } else if (authType === "signin") {
       console.log(`signin요청`);
       const signInResponse = await signInUser(formData.email, formData.password);
-      console.log(signInResponse);
+      signInResponse.status === 200 && navigate(`/todo`, { replace: true });
     }
   };
   const handleInputChange = (e) => {
