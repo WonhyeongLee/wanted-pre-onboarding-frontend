@@ -24,19 +24,21 @@ function AuthForm({ authType }) {
     // 다른 검증이 필요한 값
   };
 
+  const handleSignUp = async () => {
+    console.log("signup요청");
+    const signUpResponse = await signUpUser(formData.email, formData.password);
+    signUpResponse.status === 201 && navigate(`/signin`);
+  };
+
+  const handleSignIn = async () => {
+    console.log("signin요청");
+    const signInResponse = await signInUser(formData.email, formData.password);
+    signInResponse.status === 200 && navigate(`/todo`, { replace: true });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(`email : ${formData.email} password : ${formData.password}`);
-
-    if (authType === "signup") {
-      console.log("signup요청");
-      const signUpResponse = await signUpUser(formData.email, formData.password);
-      signUpResponse.status === 201 && navigate(`/signin`);
-    } else if (authType === "signin") {
-      console.log(`signin요청`);
-      const signInResponse = await signInUser(formData.email, formData.password);
-      signInResponse.status === 200 && navigate(`/todo`, { replace: true });
-    }
+    authType === "signup" ? handleSignUp() : handleSignIn();
   };
   const handleInputChange = (e) => {
     const inputName = e.target.name;
@@ -51,12 +53,7 @@ function AuthForm({ authType }) {
   };
 
   const buttonDisabled =
-    Object.values(errors).every((error) => !error) || !formData.email || !formData.password;
-
-  useEffect(() => {
-    console.log(formData);
-    console.log(errors);
-  }, [errors, formData]);
+    Object.values(errors).some((error) => error) || !formData.email || !formData.password;
 
   return (
     <>
@@ -81,7 +78,7 @@ function AuthForm({ authType }) {
           onChange={handleInputChange}
         />
         {errors.password && <p>{errors.password}</p>}
-        <button type='submit' data-testid={`${authType}-button`} disabled={!buttonDisabled}>
+        <button type='submit' data-testid={`${authType}-button`} disabled={buttonDisabled}>
           {authType === "signin" ? "로그인" : "회원가입"}
         </button>
       </form>
