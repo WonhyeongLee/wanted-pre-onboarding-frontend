@@ -11,6 +11,16 @@ function TodoItem({ todo, fetchTodoList }) {
     setIsModify(true);
   };
 
+  const clickTodoCompleted = async () => {
+    const updateBody = {
+      todo: modifiedTodo,
+      isCompleted: !isTodoCompleted,
+    };
+    setIsTodoCompleted(!isTodoCompleted);
+    const updatedTodo = await updateTodo(todo.id, updateBody);
+    console.log(updatedTodo);
+  };
+
   const submitModifiedTodo = async () => {
     const updateBody = {
       todo: modifiedTodo,
@@ -25,7 +35,7 @@ function TodoItem({ todo, fetchTodoList }) {
 
   const cancelModifyTodo = () => {
     setIsModify(false);
-    setModifiedTodo(todo);
+    setModifiedTodo(todo.todo);
   };
 
   const clickDeleteButton = async () => {
@@ -42,7 +52,7 @@ function TodoItem({ todo, fetchTodoList }) {
           value={"isCompleted"}
           checked={isTodoCompleted}
           onChange={() => {
-            setIsTodoCompleted(!isTodoCompleted);
+            clickTodoCompleted();
           }}
         />
 
