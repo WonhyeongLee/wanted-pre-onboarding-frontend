@@ -12,7 +12,6 @@ function TodoItem({ todo, fetchTodoList }) {
   };
 
   const handleUpdateTodo = async (newTodo, newIsCompleted) => {
-    console.log(`${newTodo},${newIsCompleted}`);
     const updateBody = {
       todo: newTodo,
       isCompleted: newIsCompleted,
