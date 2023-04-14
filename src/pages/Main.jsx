@@ -9,7 +9,7 @@ function Main() {
       Main
       <Outlet />
       {renderButton && (
-        <button type='button' onClick={() => navigate("/signin")}>
+        <button type='button' data-testid={`signin-button`} onClick={() => navigate("/signin")}>
           로그인
         </button>
       )}
