@@ -4,7 +4,7 @@ import TodoList from "../component/TodoList";
 import TodoLayout from "../component/TodoLayout";
 import useTodo from "../hooks/useTodo";
 
-const TodoPage = () => {
+function TodoPage() {
   const { todos, fetchTodoList } = useTodo();
 
   useEffect(() => {
@@ -17,6 +17,6 @@ const TodoPage = () => {
       <TodoList todos={todos} fetchTodoList={fetchTodoList} />
     </TodoLayout>
   );
-};
+}
 
 export default TodoPage;
