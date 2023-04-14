@@ -10,7 +10,7 @@ export const signUpUser = async (email, password) => {
     });
     return response;
   } catch (error) {
-    console.error(error);
+    throw error;
   }
 };
 // 로그인

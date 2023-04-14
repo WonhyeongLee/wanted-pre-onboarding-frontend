@@ -13,7 +13,6 @@ function AddTodo({ todos, fetchTodoList }) {
     e.preventDefault();
     try {
       await createTodo({ todo: todoInput });
-      // 입력창 초기화
       setTodoInput("");
       fetchTodoList();
     } catch (error) {

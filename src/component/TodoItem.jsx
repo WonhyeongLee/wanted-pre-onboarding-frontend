@@ -16,8 +16,6 @@ function TodoItem({ todo, fetchTodoList }) {
       todo: modifiedTodo,
       isCompleted: isTodoCompleted,
     };
-    console.log("submit modified todo", modifiedTodo);
-    console.log(updateBody);
     const updatedTodo = await updateTodo(todo.id, updateBody);
     setIsModify(false);
     setIsTodoCompleted(updatedTodo.isCompleted);
@@ -31,9 +29,8 @@ function TodoItem({ todo, fetchTodoList }) {
   };
 
   const clickDeleteButton = async () => {
-    const resDeleteTodo = await deleteTodo(todo.id);
+    await deleteTodo(todo.id);
     fetchTodoList();
-    console.log(resDeleteTodo);
   };
 
   return (
