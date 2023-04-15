@@ -4,10 +4,10 @@ import GoBackButton from "../component/common/GoBackButton";
 
 function SignUp() {
   return (
-    <div>
+    <>
       <GoBackButton />
       <AuthForm authType={`signup`} />
-    </div>
+    </>
   );
 }
 
