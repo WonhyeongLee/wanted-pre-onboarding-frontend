@@ -21,6 +21,7 @@ function AuthForm({ authType }) {
           onChange={handleInputChange}
           css={inputCss}
         />
+
         {errors.email && <p css={errorMessageCss}>{errors.email}</p>}
         <label htmlFor='password'>비밀번호</label>
         <input
@@ -32,6 +33,7 @@ function AuthForm({ authType }) {
           onChange={handleInputChange}
           css={inputCss}
         />
+
         {errors.password && <p css={errorMessageCss}>{errors.password}</p>}
         <button
           type='submit'

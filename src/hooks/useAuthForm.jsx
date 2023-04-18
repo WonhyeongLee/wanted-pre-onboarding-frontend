@@ -23,13 +23,11 @@ function useAuthForm(authType) {
     },
   };
   const handleSignUp = async () => {
-    console.log("signup요청");
     const signUpResponse = await signUpUser(formData.email, formData.password);
     signUpResponse.status === 201 && navigate(`/signin`);
   };
 
   const handleSignIn = async () => {
-    console.log("signin요청");
     const signInResponse = await signInUser(formData.email, formData.password);
     signInResponse.status === 200 && navigate(`/todo`, { replace: true });
   };

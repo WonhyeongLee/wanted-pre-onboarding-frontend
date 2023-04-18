@@ -15,7 +15,7 @@ const addTodoWrapper = css`
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 `;
-function AddTodo({ todos, fetchTodoList }) {
+function AddTodo({ fetchTodoList }) {
   const { createTodo } = useTodo();
   const [todoInput, setTodoInput] = useState("");
 
@@ -36,17 +36,18 @@ function AddTodo({ todos, fetchTodoList }) {
 
   return (
     <form css={addTodoWrapper} onSubmit={handleSubmit}>
-      <label></label>
+      <label htmlFor='addTodo'></label>
       <input
         css={inputCss}
         type='text'
-        id='todo'
-        name='todo'
+        id='addTodo'
+        name='addTodo'
         data-testid='new-todo-input'
         placeholder='추가할 할 일을 적어주세요'
         value={todoInput}
         onChange={handleInputChange}
       ></input>
+
       <button css={buttonCss("todo")} type='submit' data-testid='new-todo-add-button'>
         추가
       </button>

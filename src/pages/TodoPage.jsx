@@ -13,7 +13,7 @@ function TodoPage() {
 
   return (
     <TodoLayout>
-      <AddTodo todos={todos} fetchTodoList={fetchTodoList} />
+      <AddTodo fetchTodoList={fetchTodoList} />
       <TodoList todos={todos} fetchTodoList={fetchTodoList} />
     </TodoLayout>
   );
