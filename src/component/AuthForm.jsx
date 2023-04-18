@@ -1,59 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState } from "react";
-import { signInUser, signUpUser } from "../api/auth";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import useAuthForm from "../hooks/useAuthForm";
+import { Link } from "react-router-dom";
 import { inputCss, formCss, buttonCss, errorMessageCss } from "../component/style/CommonStyles";
 
 function AuthForm({ authType }) {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const [errors, setErrors] = useState({});
-
-  const validators = {
-    email: (value) => {
-      if (!value.includes("@")) {
-        return "이메일 형식에 @이 포함되어야 합니다.";
-      }
-    },
-    password: (value) => {
-      if (value.length < 8) {
-        return "비밀번호는 8자 이상이어야 합니다.";
-      }
-    },
-    // 다른 검증이 필요한 값
-  };
-
-  const handleSignUp = async () => {
-    const signUpResponse = await signUpUser(formData.email, formData.password);
-    signUpResponse.status === 201 && navigate(`/signin`);
-  };
-
-  const handleSignIn = async () => {
-    const signInResponse = await signInUser(formData.email, formData.password);
-    signInResponse.status === 200 && navigate(`/todo`, { replace: true });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    authType === "signup" ? handleSignUp() : handleSignIn();
-  };
-  const handleInputChange = (e) => {
-    const inputName = e.target.name;
-    const inputValue = e.target.value;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [inputName]: inputValue,
-    }));
-    const error = validators[inputName] && validators[inputName](inputValue);
-
-    setErrors((prevErrors) => ({ ...prevErrors, [inputName]: error }));
-  };
-
-  const buttonDisabled =
-    Object.values(errors).some((error) => error) || !formData.email || !formData.password;
+  const { formData, errors, buttonDisabled, handleSubmit, handleInputChange } =
+    useAuthForm(authType);
 
   return (
     <>
