@@ -17,8 +17,8 @@ instance.interceptors.response.use(
   },
   (error) => {
     const errorMessage = error.response ? error.response.data.message : "알수없는에러";
-    console.error(errorMessage);
-    return Promise.reject(error);
+    alert(errorMessage);
+    return Promise.reject({ error, errorMessage });
   }
 );
 
