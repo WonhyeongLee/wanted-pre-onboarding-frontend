@@ -6,20 +6,20 @@ function useTodo() {
 
   const fetchTodoList = useCallback(async () => {
     const response = await getTodosApi();
-    setTodos(response.data);
+    setTodos(response);
   }, [setTodos]);
 
   const createTodo = async (todoContent) => {
     const response = await createTodoApi(todoContent);
-    setTodos((prevTodos) => [...prevTodos, response.data]);
+    setTodos((prevTodos) => [...prevTodos, response]);
     return response;
   };
 
   const updateTodo = async (todoId, body) => {
     const response = await updateTodoApi(todoId, body);
     // Id 일치 여부 확인 후 todo 교체
-    setTodos((prevTodos) => prevTodos.map((todo) => (todo.id === todoId ? response.data : todo)));
-    return response.data;
+    setTodos((prevTodos) => prevTodos.map((todo) => (todo.id === todoId ? response : todo)));
+    return response;
   };
 
   const deleteTodo = async (todoId) => {
