@@ -4,18 +4,17 @@
 
 ## 배포링크
 
-  - 추가예정
+  https://enchanting-boba-587e02.netlify.app/
 
-## 프로젝트 설치 및 실행
+## 프로젝트 실행방법
 
-  - 추가예정
-
-## 프로젝트 구조
+1. git clone 혹은 zip파일로 다운로드
+2. `npm install & npm start`
 
 ## 진행가이드 체크리스트
 
 - [x] CRA를 이용해 구현
-- [ ] git clone 후, `npm install & npm start` 로 별다른 설정없이 실행 가능 해야함
+- [x] git clone 후, `npm install & npm start` 로 별다른 설정없이 실행 가능 해야함
 - [x] 함수 컴포넌트를 이용해서 진행
 - [x] README.md 작성
 - [x] 아래 라이브러리만 사용해서 구현
