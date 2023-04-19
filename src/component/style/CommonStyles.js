@@ -69,5 +69,9 @@ export const buttonCss = (variant) => css`
   &:hover {
     background-color: #0056b3;
   }
+  &:disabled {
+    background-color: #a9a9a9;
+    cursor: not-allowed;
+  }
   ${buttonVariants[variant]}
 `;
