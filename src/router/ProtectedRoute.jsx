@@ -1,6 +1,8 @@
 import { Navigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+
 const ProtectedRoute = ({ children }) => {
-  const isAuthenticated = localStorage.getItem("access_token") !== null;
+  const isAuthenticated = useAuth();
   return isAuthenticated ? children : <Navigate to='/signin' replace />;
 };
 
