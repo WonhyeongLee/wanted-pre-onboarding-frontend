@@ -1,8 +1,14 @@
 import { Navigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const AuthRoute = ({ children }) => {
-  const isAuthenticated = localStorage.getItem("access_token") !== null;
-  return isAuthenticated ? <Navigate to='/todo' replace /> : children;
+  const isAuthenticated = useAuth();
+
+  if (isAuthenticated) {
+    return <Navigate to='/todo' />;
+  }
+
+  return children;
 };
 
 export default AuthRoute;
