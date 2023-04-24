@@ -23,7 +23,7 @@ const AppRouter = () => {
       </Route>
 
       <Route
-        path='/todo'
+        path='/todo/*'
         element={
           <ProtectedRoute>
             <Routes>
